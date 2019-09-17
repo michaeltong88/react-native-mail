@@ -1,4 +1,4 @@
-package com.chirag.RNMail;
+package com.mingming.RNMail;
 
 import java.util.Arrays;
 import java.util.ArrayList;

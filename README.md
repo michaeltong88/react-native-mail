@@ -43,7 +43,7 @@ dependencies {
 
 
 ```java
-import com.chirag.RNMail.*;  // <--- import
+import com.mingming.RNMail.*;  // <--- import
 
 public class MainActivity extends Activity implements DefaultHardwareBackBtnHandler {
   ......
@@ -75,7 +75,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
 * else if MainActivity extends ReactActivity: register module in `MainApplication.java`
 
 ```java
-import com.chirag.RNMail.*; // <--- import
+import com.mingming.RNMail.*; // <--- import
 
 public class MainApplication extends Application implements ReactApplication {
     ....
@@ -125,11 +125,16 @@ export default class App extends Component {
       bccRecipients: ['supportBCC@example.com'],
       body: '<b>A Bold Body</b>',
       isHTML: true,
-      attachment: {
-        path: '',  // The absolute path of the file from which to read data.
-        type: '',   // Mime Type: jpg, png, doc, ppt, html, pdf, csv
-        name: '',   // Optional: Custom filename for attachment
-      }
+      attachments: [{
+        path: '',     // The absolute path of the file from which to read data.
+        mimeType: '', // Mime Type: image/jpeg, image/png, text/csv, text/html, application/pdf, etc
+        name: '',     // Optional: Custom filename for attachment
+      },
+      {
+        path: '',     // The absolute path of the file from which to read data.
+        mimeType: '', // Mime Type: image/jpeg, image/png, text/csv, text/html, application/pdf, etc
+        name: '',     // Optional: Custom filename for attachment
+      }]
     }, (error, event) => {
       Alert.alert(
         error,
@@ -165,4 +170,4 @@ export default class App extends Component {
 On Android, the `callback` will only be called if an `error` occurs. The `event` argument is unused!
 
 ## Here is how it looks:
-![Demo gif](https://github.com/chirag04/react-native-mail/blob/master/screenshot.png)
+![Demo gif](https://github.com/mingmingtong/react-native-mail/blob/master/screenshot.png)
