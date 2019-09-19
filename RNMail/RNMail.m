@@ -81,7 +81,21 @@ RCT_EXPORT_METHOD(mail:(NSDictionary *)options
       				}
       				// Get the resource path and read the file using NSData
       				NSData *fileData = [NSData dataWithContentsOfFile:path];
-      				[mail addAttachmentData:fileData mimeType:type fileName:name];
+                    if (fileData == NULL) {
+                        // Imges for jpeg and png
+                        if ( [type isEqualToString:@"image/jpeg"]) {
+                            NSDictionary * dictImage = @{@"uri": path};
+                            UIImage * image = [RCTConvert UIImage:dictImage];
+                            fileData = UIImageJPEGRepresentation(image, 1.0);
+                        } else if ([type isEqualToString:@"image/png"]) {
+                            NSDictionary * dictImage = @{@"uri": path};
+                            UIImage * image = [RCTConvert UIImage:dictImage];
+                            fileData = UIImagePNGRepresentation(image);
+                        }
+                    }
+                    if (fileData != NULL) {
+                        [mail addAttachmentData:fileData mimeType:type fileName:name];
+                    }
       			}
         }
 
